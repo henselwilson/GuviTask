@@ -29,6 +29,10 @@ class MailCheck:
             mailScore+=1
         else:
             return mailScore
+        if len(split_dot[1])>=1:
+            mailScore+=1
+        else:
+            return mailScore
 
         return mailScore
 

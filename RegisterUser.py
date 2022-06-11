@@ -7,7 +7,8 @@ def invalidEntryAction():
     elif action.lower() == "no":
         return
     else:
-        invalidEntryAction()
+        invVal=invalidEntryAction()
+        return invVal
 
 
 class Add_New_User:
@@ -17,21 +18,22 @@ class Add_New_User:
 
             
     def register_user(self):
-        handle=open("emailDetails.csv","a+")
-        databRead=csv.DictReader(handle)
+        handle_Read=open("emailDetails.csv","r")
+        hanndle_Write=open('emailDetails.csv',"a",newline="")
+        databRead=csv.DictReader(handle_Read)
         datab_row_Read=list(databRead)
         for row in datab_row_Read:
             if row["email"] == self.username:
                 print("This Account already Exists")
-                invalidEntryAction()
-                handle.close()
+                isLogin=invalidEntryAction()
+                handle_Read.close()
+                hanndle_Write.close()
                 break
         else:
-
             entry = [self.username, self.password]
-            databWriter=csv.writer(handle)
+            databWriter=csv.writer(hanndle_Write)
             databWriter.writerow(entry)
             print("Successfully registered New User. Login to Continue")
-            handle.close()
-
-            
+            handle_Read.close()
+            hanndle_Write.close()
+        return 2

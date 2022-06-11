@@ -3,19 +3,20 @@ from RegisterUser import Add_New_User
 from ExistingUser import ExistingUser
 
 def RegistrationActions():
+
     email = input("Enter your new mail ID: ")
     pwd = input("Enter your Password: ")
     NewUser = MailCheck(email, pwd)
     mailScore = NewUser.mailCheck()
     pass_score = NewUser.passCheck()
-    if mailScore == 5 and pass_score == 5:
+    if mailScore == 6 and pass_score == 5:
         addUser = Add_New_User(email, pwd)
         isRegistered=addUser.register_user()
         if isRegistered==2:
             LoginActions()
     else:
-        print(
-            "You Email/Password doesn't comply with the current conditions. Please read the Necessary requirements for email and password")
+        print("You Email/Password doesn't comply with the current conditions. Please read the Necessary requirements for email and password")
+        RegistrationActions()
 
 def LoginActions():
     email = input("Enter your mail ID: ")
