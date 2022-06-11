@@ -3,7 +3,10 @@ from RegisterUser import Add_New_User
 from ExistingUser import ExistingUser
 
 def RegistrationActions():
-
+    print("""
+    Your Mail should not start with a special Character. Multiple '@' is not allowed. Multiple '.' are not allowed.
+    '@' and '.' cannot be consecutive in your mail id. eg: 'henselWils@gmail.com'. 
+    """)
     email = input("Enter your new mail ID: ")
     pwd = input("Enter your Password: ")
     NewUser = MailCheck(email, pwd)
